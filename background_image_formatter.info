@@ -1,0 +1,4 @@
+name = Background Image Formatter
+description = Background Image Formatter provides an image formatter to display images in background.
+core = "7.x"
+dependencies[] = image
