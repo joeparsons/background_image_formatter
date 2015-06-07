@@ -100,11 +100,15 @@ function background_image_formatter_field_formatter_view($entity_type, $entity, 
   }
 
   foreach ($items as $delta => $item) {
-    $image_style_file_url = image_style_url($settings['image_style'], $item['uri']);
+    $image_url = file_create_url($item['uri']);
+
+    if (!empty($settings['image_style'])) {
+      $image_url = image_style_url($settings['image_style'], $item['uri']);
+    }
 
     $theme_data = array(
       'background_image_selector' => $settings['background_image_selector'],
-      'image_url' => $image_style_file_url,
+      'image_url' => $image_url,
     );
 
     switch ($settings['background_image_output_type']) {
