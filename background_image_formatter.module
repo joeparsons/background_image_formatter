@@ -153,7 +153,7 @@ function theme_background_image_formatter_css($variables) {
   $background_image_selector = filter_xss($variables['background_image_selector']);
   $background_image_selector = str_ireplace('&lt;', '>', $background_image_selector);
 
-  $css = $background_image_selector . ' {background-image: ' . $variables['image_url'] . ';}';
+  $css = $background_image_selector . ' {background-image: url("' . $variables['image_url'] . '");}';
   drupal_add_css($css, array('type' => 'inline'));
 }
 
