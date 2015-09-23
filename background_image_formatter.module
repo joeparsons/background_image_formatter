@@ -94,7 +94,6 @@ function background_image_formatter_field_formatter_view($entity_type, $entity, 
   $element = array();
   $settings = $display['settings'];
 
-
   if (!is_background_image_formatter_display_type($display)) {
     return $element;
   }
