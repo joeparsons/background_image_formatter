@@ -14,7 +14,7 @@ function background_image_formatter_field_formatter_info() {
       'field types' => array('image'),
       'settings' => array(
         'image_style' => '',
-        'background_image_selector' => '.background-image-formatter',
+        'background_image_selector' => 'background-image-formatter',
         'background_image_output_type' => 'inline',
       ),
     ),
