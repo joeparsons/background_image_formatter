@@ -55,7 +55,6 @@ function background_image_formatter_field_formatter_settings_form($field, $insta
     '#type' => 'textfield',
     '#default_value' => $settings['background_image_selector'],
     '#required' => FALSE,
-    '#element_validate' => array('check_plain'),
     '#description' => t('CSS selector that image(s) are attached to.'),
   );
 
@@ -106,7 +105,7 @@ function background_image_formatter_field_formatter_view($entity_type, $entity, 
     }
 
     $theme_data = array(
-      'background_image_selector' => $settings['background_image_selector'],
+      'background_image_selector' => strip_tags($settings['background_image_selector']),
       'image_url' => $image_url,
     );
 
@@ -149,10 +148,7 @@ function background_image_formatter_theme() {
  * CSS theme callback function.
  */
 function theme_background_image_formatter_css($variables) {
-  $background_image_selector = filter_xss($variables['background_image_selector']);
-  $background_image_selector = str_ireplace('&lt;', '>', $background_image_selector);
-
-  $css = $background_image_selector . ' {background-image: url("' . $variables['image_url'] . '");}';
+  $css = $variables['background_image_selector'] . ' {background-image: url("' . $variables['image_url'] . '");}';
   drupal_add_css($css, array('type' => 'inline'));
 }
 
