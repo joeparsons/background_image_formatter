@@ -27,7 +27,7 @@ class BackgroundImageFormatter extends ImageFormatter {
   public static function defaultSettings() {
     return [
       'image_style' => '',
-      'background_image_output_type' => '',
+      'background_image_output_type' => 'inline',
       'background_image_selector' => '',
     ];
   }
