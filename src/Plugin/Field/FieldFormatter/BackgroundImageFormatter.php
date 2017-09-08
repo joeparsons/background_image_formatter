@@ -76,7 +76,7 @@ class BackgroundImageFormatter extends ImageFormatter {
    */
   public function settingsSummary() {
 
-    $summary = array();
+    $summary = [];
 
     $image_styles = image_style_options(FALSE);
 
@@ -134,7 +134,8 @@ class BackgroundImageFormatter extends ImageFormatter {
       if ($image_style) {
         $image_uri = $item->entity->getFileUri();
 
-        $image_url = ImageStyle::load($image_style->getName())->buildUrl($image_uri);
+        $image_url = ImageStyle::load($image_style->getName())
+          ->buildUrl($image_uri);
         // When page caching is enabled, try serving the image from the correct HTTP protocol
         list(, $image_path) = explode('://', $image_url, 2);
         $image_uri = '//' . $image_path;
@@ -144,10 +145,10 @@ class BackgroundImageFormatter extends ImageFormatter {
 
       $selector .= '_' . $id;
 
-      $theme = array(
+      $theme = [
         '#background_image_selector' => $selector,
         '#image_uri' => $image_uri,
-      );
+      ];
 
       switch ($this->getSetting('background_image_output_type')) {
         case 'css':
@@ -168,9 +169,9 @@ class BackgroundImageFormatter extends ImageFormatter {
 
           $theme['#theme'] = 'background_image_formatter_inline';
 
-          $elements[$delta] = array(
+          $elements[$delta] = [
             '#markup' => \Drupal::service('renderer')->render($theme),
-          );
+          ];
 
           break;
       }
