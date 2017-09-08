@@ -137,7 +137,10 @@ class BackgroundImageFormatter extends ImageFormatter {
       if ($image_style) {
         $image_uri = $item->entity->getFileUri();
 
-        $image_uri = ImageStyle::load($image_style->getName())->buildUrl($image_uri);
+        $image_url = ImageStyle::load($image_style->getName())->buildUrl($image_uri);
+        // When page caching is enabled, try serving the image from the correct HTTP protocol
+        list(, $image_path) = explode('://', $image_url, 2);
+        $image_uri = '//' . $image_path;
       }
 
       $selector = strip_tags($this->getSetting('background_image_selector'));
