@@ -1,7 +1,4 @@
-<?php /**
- * @file
- * Contains \Drupal\background_image_formatter\Plugin\Field\FieldFormatter\BackgroundImageFormatter.
- */
+<?php
 
 namespace Drupal\background_image_formatter\Plugin\Field\FieldFormatter;
 
@@ -42,32 +39,32 @@ class BackgroundImageFormatter extends ImageFormatter {
     $image_styles = image_style_options(FALSE);
 
     $element['image_style'] = [
-      '#title' => t('Image style'),
+      '#title' => $this->t('Image style'),
       '#type' => 'select',
       '#options' => $image_styles,
       '#default_value' => $this->getSetting('image_style'),
-      '#empty_option' => t('None (original image)'),
-      '#description' => t('Select the image style to use.'),
+      '#empty_option' => $this->t('None (original image)'),
+      '#description' => $this->t('Select the image style to use.'),
     ];
 
     $element['background_image_output_type'] = [
-      '#title' => t('Output To'),
+      '#title' => $this->t('Output To'),
       '#type' => 'select',
       '#options' => [
-        'inline' => t('Write background-image to inline style attribute'),
-        'css' => t('Write background-image to CSS selector'),
+        'inline' => $this->t('Write background-image to inline style attribute'),
+        'css' => $this->t('Write background-image to CSS selector'),
       ],
       '#default_value' => $this->getSetting('background_image_output_type'),
       '#required' => TRUE,
-      '#description' => t('Define how background-image will be printed to the dom.'),
+      '#description' => $this->t('Define how background-image will be printed to the dom.'),
     ];
 
     $element['background_image_selector'] = [
-      '#title' => t('CSS Selector'),
+      '#title' => $this->t('CSS Selector'),
       '#type' => 'textfield',
       '#default_value' => $this->getSetting('background_image_selector'),
       '#required' => FALSE,
-      '#description' => t('CSS selector that image(s) are attached to.'),
+      '#description' => $this->t('CSS selector that image(s) are attached to.'),
     ];
 
     return $element;
@@ -88,16 +85,16 @@ class BackgroundImageFormatter extends ImageFormatter {
     $select_style = $this->getSetting('image_style');
 
     if (isset($image_styles[$select_style])) {
-      $summary[] = t('URL for image style: @style', ['@style' => $image_styles[$select_style]]);
+      $summary[] = $this->t('URL for image style: @style', ['@style' => $image_styles[$select_style]]);
     }
     else {
-      $summary[] = t('Original image');
+      $summary[] = $this->t('Original image');
     }
 
-    $summary[] = t('Output type: @output_type', ['@output_type' => $this->getSetting('background_image_output_type')]);
+    $summary[] = $this->t('Output type: @output_type', ['@output_type' => $this->getSetting('background_image_output_type')]);
 
 
-    $summary[] = t('The CSS selector <code>@background_image_selector</code> will be created with the image set to the background-image property.', [
+    $summary[] = $this->t('The CSS selector <code>@background_image_selector</code> will be created with the image set to the background-image property.', [
       '@background_image_selector' => $this->getSetting('background_image_selector') . '_id',
     ]);
 
