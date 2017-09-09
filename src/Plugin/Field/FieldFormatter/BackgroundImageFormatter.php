@@ -143,7 +143,10 @@ class BackgroundImageFormatter extends ImageFormatter {
 
       $selector = strip_tags($this->getSetting('background_image_selector'));
 
-      $selector .= '_' . $id;
+      // Only add an id when using inline styles
+      if( $this->getSetting('background_image_output_type') == 'inline' ){
+        $selector .= '_' . $id;
+      }
 
       $theme = [
         '#background_image_selector' => $selector,
