@@ -1,5 +1,5 @@
 {
-  "name": "drupal/background_image_formatter",
+  "name": "joeparsons/background_image_formatter",
   "type": "drupal-module",
   "description": "Background Image Formatter provides an image formatter to display images in background.",
   "keywords": [
